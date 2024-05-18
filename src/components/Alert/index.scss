@@ -1,0 +1,104 @@
+/*
+* Error alert
+*/
+
+$error-border: rgb(192, 12, 12);
+$error-bg: rgba(42, 2, 2, 0.443);
+$error-message-color: rgb(243, 148, 148);
+
+/*
+* Warning alert
+*/
+
+$warning-border: rgb(215, 208, 13);
+$warning-bg: rgba(42, 41, 2, 0.443);
+$warning-message-color: rgb(243, 235, 148);
+
+/*
+* Success alert
+*/
+
+$success-border: rgb(13, 215, 36);
+$success-bg: rgba(4, 42, 2, 0.443);
+$success-message-color: rgb(156, 243, 148);
+
+/*
+* Info alert
+*/
+
+$info-border: rgb(13, 215, 208);
+$info-bg: rgba(2, 41, 42, 0.443);
+$info-message-color: rgb(148, 243, 241);
+
+/*
+* Note alert
+*/
+$note-border: rgb(13, 43, 215);
+$note-bg: rgba(2, 7, 42, 0.443);
+$note-message-color: rgb(162, 148, 243);
+
+/*
+* Note alert
+*/
+$default-border: rgb(122, 122, 122);
+$default-bg: rgba(54, 56, 56, 0.443);
+$default-message-color: rgb(179, 179, 179);
+
+/**************************************************************/
+
+
+@mixin alert($type, $bg, $border, $message){
+
+    .#{$type}{
+        border: 1px dotted $border;
+        width: 100%;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: $bg;
+        color: $message;
+        margin-bottom: 30px;
+    
+        .first-wrapper{
+            display: flex; 
+            align-items:center;
+            justify-content:space-between;
+            margin: 10px;
+    
+            .title{
+                display: flex;
+                align-items: center;
+    
+                h3{
+                    margin: 0;
+                }
+    
+                .icon{
+                    margin-right: 10px;
+                }
+            }
+    
+            a{
+                color: white;
+                :hover{
+                    color: red;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+
+@include alert(error-alert,#{$error-bg} ,#{$error-border} ,#{$error-message-color} );
+
+@include alert(info-alert,#{$info-bg} ,#{$info-border} ,#{$info-message-color} );
+
+@include alert(warning-alert,#{$warning-bg} ,#{$warning-border} ,#{$warning-message-color} );
+
+@include alert(success-alert,#{$success-bg} ,#{$success-border} ,#{$success-message-color} );
+
+@include alert(note-alert,#{$note-bg} ,#{$note-border} ,#{$note-message-color} );
+
+@include alert(default-alert,#{$default-bg} ,#{$default-border} ,#{$default-message-color} );
+
+/**************************************/
